@@ -1,0 +1,81 @@
+<!doctype html>
+ <head>
+  <meta charset="UTF-8">
+  <title>canvas动画示例|Bouncing Balls</title>
+  <style>
+      *{margin:0;padding:0}
+      body{overflow:scroll;background-color:rgba(200,200,200,0.8)}
+      #canvas{margin-left:50px;margin-top:50px;background:rgba(233,225,172,1);box-shadow: rgba(0,0,0,0.5) 5px 5px 15px;}
+	  
+	  #glasspane{position: absolute;
+				left: 100px;
+				top: 100px;
+				padding: 0px 20px 10px 10px;
+				background: rgba(0, 0, 0, 0.3);
+				color: rgba(30,40,50,0.8);
+				font-family: Droid Sans, Arial,Helvetica, sans-serif;
+				font-size: 12px;
+				cursor: pointer;
+				-webkit-box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
+				-moz-box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
+				box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;}
+	  #glasspane tittle{font-size:2em;color:rgba(255,255,0,0.8)}			
+				
+	  button{width:50px;height:50px;border-radius:50%;background:#5C807E;border:none;font-size:1em; font-family:'Microsoft YaHei';color:#000;transition:background 0.2s,color 0.2s;-moz-transition:background 0.2s,color 0.2s;-webkit-transition:background 0.2s,color 0.2s;text-align:center;}
+	  button:hover{background:#2E5855;color:#FFF;}
+	  button:focus{outline:#963 dashed 2px}
+  </style>
+</head>
+<body>
+ <div id="glasspane">
+     <h2 class="title">Bouncing Balls</h2>
+     <p>One hundred balls bouncing!</p>
+     <button id="startButton">Start</button>
+ </div>
+ 
+ <canvas id="canvas" width="1000" height="600">
+    Canvas not supported!
+ </canvas>
+ <script type="text/javascript">
+ var canvas=document.getElementById('canvas'),
+     context=canvas.getContext('2d'),
+	 startBtn=document.getElementById('startButton'),
+	 glasspane=document.getElementById('glasspane'),
+	 paused=false;
+	 
+	 function drawText()
+	 {
+		 context.font = "60pt Arial";
+		 context.fillStyle = "rgba(40,50,70,0.8)";
+		 context.strokeStyle = "rgba(90,50,200,1)";
+		 context.fillText('Hello Canvas',canvas.width/2 - 215,
+		 canvas.height/2 + 15);
+		 context.strokeText('Hello Canvas',canvas.width/2 - 220,
+		 canvas.height/2 + 15);
+	 };
+	 drawText();
+	 
+	 function drawRound(x,y)
+	 {
+	     context.fillStyle = "rgba(120,80,50,0.8)";
+		 context.beginPath();
+		 context.arc(x,y,50,0,Math.PI*2,true);
+		 context.closePath();
+		 context.fill();
+	 };
+	 drawRound(550,500);
+	 
+startBtn.onclick=function(e)
+{
+     e.preventDefault();
+	 pasued=!paused;
+	 startBtn.innerHTML=paused?'Start':'Stop';	
+};
+glasspane.onmousedown=functioon(e)
+{
+     e.preventDefault;	//阻止浏览器对于鼠标点击的默认反应
+};
+	
+ </script>
+</body>
+</html>
